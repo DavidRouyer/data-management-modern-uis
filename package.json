@@ -1,0 +1,20 @@
+{
+  "name": "data-management-modern-uis",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.46.1",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "typescript": "^5.3.3"
+  },
+  "packageManager": "yarn@4.0.2",
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.1.154"
+  }
+}
