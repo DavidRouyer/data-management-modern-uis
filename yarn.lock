@@ -614,6 +614,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify-json/streamline-emojis@npm:^1.1.8":
+  version: 1.1.8
+  resolution: "@iconify-json/streamline-emojis@npm:1.1.8"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: d77ae6de8f4264568f450bf63a994b5ec864664e4cea54839a6354b52c54d657e7e7a54576266d702810daeea76471a078570e645dd161cf9f9b0d0dcc5cd79d
+  languageName: node
+  linkType: hard
+
 "@iconify/types@npm:*, @iconify/types@npm:^2.0.0":
   version: 2.0.0
   resolution: "@iconify/types@npm:2.0.0"
@@ -2830,6 +2839,7 @@ __metadata:
   resolution: "data-management-modern-uis@workspace:."
   dependencies:
     "@iconify-json/lucide": "npm:^1.1.154"
+    "@iconify-json/streamline-emojis": "npm:^1.1.8"
     "@slidev/cli": "npm:^0.46.1"
     "@slidev/theme-default": "npm:latest"
     "@slidev/theme-seriph": "npm:latest"

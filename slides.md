@@ -1,47 +1,51 @@
 ---
-theme: seriph
 background: https://images.unsplash.com/photo-1557264337-e8a93017fe92?q=90&w=2070
 class: text-center
 highlighter: shikiji
-lineNumbers: false
 info: |
   ## Client-server interaction
+
   Presentation slides for data management in front-end.
-drawings:
-  persist: false
+
+  [David Rouyer](https://github.com/davidrouyer) for [Choose](https://www.appchoose.io)
 transition: slide-left
-title: Interaction client-serveur
-mdc: true
+layout: cover
 ---
 
 # Interaction client-serveur
 
 Penser une interface utilisateur moderne
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Pressez Espace pour commencer <carbon:arrow-right class="inline"/>
-  </span>
+<div class="text-sm">
+David Rouyer
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
-transition: fade-out
+layout: center
 ---
 
 # Introduction
 
-Une interface interagit avec les données de trois manières différentes :
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="items-center w-full grid grid-cols-3">
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+transition: fade-out
+layout: section
+---
+
+## Interface client-serveur en trois concepts
+<div class="items-center w-full grid grid-cols-3 my-auto mt-16">
   <div>
     <h2>Queries</h2>
     <p>La récupération de données</p>
@@ -56,10 +60,13 @@ Une interface interagit avec les données de trois manières différentes :
   </div>
 </div>
 
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+---
+transition: slide-up
+level: 2
+layout: center
+---
+
+# Partie 1 : Queries
 
 <style>
 h1 {
@@ -73,68 +80,164 @@ h1 {
 }
 </style>
 
-<!--
-Here is another comment.
--->
+---
+transition: slide-up
+level: 2
+layout: two-cols-header
+---
+
+# L'état de l'application <code>state</code>
+
+::left::
+
+<br>
+<br>
+
+1. La query demande et récupère les données <code>fetch</code> du serveur
+<br>
+<br>
+2. On stocke l'information dans l'état <code>state</code> de l'application
+<br>
+<br>
+3. L'état est détruit quand on ferme l'onglet ou le navigateur
+
+::right::
+
+<img src="/undraw_download_re_li50.svg" class="aspect-square p-16" />
 
 ---
 transition: slide-up
 level: 2
+layout: two-cols-header
 ---
 
-# Partie 1 : Queries - L'état (state)
+# Première fois que l'on accède à l'information
+
+::left::
 
 <br>
+<br>
 
-1. Télécharge les données (**fetch**) du serveur sur l'interface
+- On affiche le placeholder
 <br>
 <br>
-2. Stockage dans l'état (**state**) de l'application
+- L'information est stockée dans l'état
 <br>
 <br>
-3. Le state est détruit quand on ferme l'onglet ou le navigateur
+- On remplace le placeholder par l'information
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+::right::
+
+<div class="flex flex-col h-full justify-center">
+  <div class="border border-blue-300 shadow rounded-md p-4 mb-24 max-w-sm w-full mx-auto">
+    <div class="animate-pulse flex space-x-4">
+      <div class="rounded-full bg-slate-700 h-10 w-10"></div>
+      <div class="flex-1 space-y-6 py-1">
+        <div class="h-2 bg-slate-700 rounded"></div>
+        <div class="space-y-3">
+          <div class="grid grid-cols-3 gap-4">
+            <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+            <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+          </div>
+          <div class="h-2 bg-slate-700 rounded"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ---
 transition: slide-up
 level: 2
+layout: two-cols-header
 ---
 
-# Partie 1 : Queries - UX avec l'état
+# Les fois suivantes
+
+::left::
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-1. Première fois que l'on accède à l'information
-   - On affiche le chargement
-   - Une fois le chargement terminé, on stocke la donnée dans l'état et on l'affiche
-<br>
-<br>
-2. Les fois suivantes
-   - On affiche les données de l'état
+- On affiche les données de l'état
+
 <br>
 <br>
 <br>
-<p class="text-red-600">
-  <lucide-shield-alert /> Que se passe-t-il si les données sont mises à jour ?
-</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+::right::
+
+<div class="flex flex-col h-full justify-center">
+  <div class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+    <div class="flex space-x-4">
+      <img class="rounded-full h-10 w-10" src="https://www.thegoodgoods.fr/wp-content/uploads/2020/06/montlimart-logo.webp" />
+      <div class="flex-1 space-y-6 py-1">
+        <div class="h-2 rounded">Montlimart</div>
+        <div class="space-y-3">
+          <div class="grid gap-4 text-xs">
+            Du 01/01/1970 au 19/01/2038
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ---
 transition: slide-up
 level: 2
+layout: fact
 ---
 
-# Partie 1 : Queries - La fraîcheur des données
+# Interface instantanée <streamline-emojis-confetti-ball />
 
-<br>
+---
+transition: slide-up
+level: 2
+layout: center
+---
 
-Fraîcheur des données :
-- Pendant une période, les données sont jugées fraîches (**fresh**)
-- Passée cette période, la donnée est jugée périmée (**stale**)
-<br>
-<br>
-<br>
-<p class="text-red-600">
-  <lucide-shield-alert /> Ajouter un état sur les données ne permet pas de les mettre à jour ?
-</p>
+
+# Les données peuvent être mises à jour <streamline-emojis-bomb />
+
+---
+transition: slide-up
+level: 2
+layout: two-cols-header
+---
+
+# La fraîcheur des données
+
+::left::
+
+<div class="flex flex-col flex-no-wrap justify-center items-center mb-40 px-8">
+<streamline-emojis-blossom class="w-24 h-24" />
+<p class="text-center">Pendant une période, les données sont jugées fraîches <code>fresh</code></p>
+</div>
+
+::right::
+
+<div class="flex flex-col flex-no-wrap justify-center items-center mb-40 px-8">
+<streamline-emojis-ambulance class="w-24 h-24" />
+<p class="text-center">Passée cette période, la donnée est jugée périmée <code>stale</code></p>
+</div>
+
 
 <div class="abs-br">
   <div className="rounded-md border p-4">
@@ -155,19 +258,37 @@ Fraîcheur des données :
 ---
 transition: slide-up
 level: 2
+layout: center
 ---
 
-# Partie 1 : Queries - Mettre à jour les données 1
+# Quand mettre à jour <code>refetch</code><br> les données périmées ? <streamline-emojis-electric-plug />
 
-<br>
+---
+transition: slide-up
+level: 2
+layout: two-cols-header
+---
+
+# Mettre à jour via la navigation
+
+::left::
+
 <br>
 <br>
 <br>
 <br>
 
 - Quand on navigue sur l'application
+<br>
+<br>
 - Quand on met à jour une partie de l'application
+<br>
+<br>
 - Quand on clique sur F5
+
+::right::
+
+<img src="/undraw_destination_re_sr74.svg" class="aspect-square p-16 pb-32" />
 
 <div class="abs-br">
   <div className="rounded-md border p-4">
@@ -188,9 +309,12 @@ level: 2
 ---
 transition: slide-up
 level: 2
+layout: two-cols-header
 ---
 
-# Partie 1 : Queries - Mettre à jour les données 2
+# Mettre à jour via la présence
+
+::left::
 
 <br>
 <br>
@@ -198,7 +322,11 @@ level: 2
 <br>
 <br>
 
-- Quand on retourne sur un onglet
+- Quand on quitte/retourne sur l'application sans la fermer
+
+::right::
+
+<img src="/undraw_undraw_flying_drone_u3r2_-3-_egfy.svg" class="aspect-square p-16 pb-32" />
 
 <div class="abs-br">
   <div className="rounded-md border p-4">
@@ -219,9 +347,12 @@ level: 2
 ---
 transition: slide-up
 level: 2
+layout: two-cols-header
 ---
 
-# Partie 1 : Queries - Mettre à jour les données 3
+# Mettre à jour après déconnexion
+
+::left::
 
 <br>
 <br>
@@ -230,6 +361,10 @@ level: 2
 <br>
 
 - Quand on est déconnecté/reconnecté du réseau
+
+::right::
+
+<img src="/undraw_travel_mode_re_2lxo.svg" class="aspect-square p-16 pb-32" />
 
 <div class="abs-br">
   <div className="rounded-md border p-4">
@@ -250,32 +385,52 @@ level: 2
 ---
 transition: slide-up
 level: 2
+layout: two-cols-header
 ---
 
-# Partie 1 : Queries - UX avec l'état et la fraîcheur
-Mise à jour des données
+# Mises à jour et fraîcheur
+
+::left::
+
+## Les données sont<br> fraîches <streamline-emojis-blossom />
 <br>
 
-1. Les données sont fraîches
-   - On n'interroge pas le serveur
-   - On affiche les données de l'état (fraîches)
+  - On n'interroge pas le serveur
+  - On affiche les données de l'état
 
-2. Les données sont périmées
-   - On interroge le serveur
-   - On affiche les données de l'état (périmées)
-   - On met à jour les données dans l'état
-   - On affiche les données de l'état (fraîches)
+<br>
+<br>
+<br>
+<br>
 
-<p class="text-green-600">
-  <lucide-sparkles /> Meilleure UX
-</p>
+::right::
+
+## Les données sont<br> périmées <streamline-emojis-ambulance />
+<br>
+
+  - On affiche les données de l'état (périmées)
+  - On interroge le serveur et on met à jour les données dans l'état
+  - On affiche les données de l'état (fraîches)
+
+<br>
+<br>
+<br>
+<br>
+
+---
+transition: slide-up
+level: 2
+layout: center
+---
+
+# Interface instantanée et <br> données mises à jour <streamline-emojis-confetti-ball /><streamline-emojis-confetti-ball />
 
 ---
 transition: slide-up
 level: 2
 ---
 
-# Partie 1 : Queries - Le code
+# Le code
 
 <br>
 

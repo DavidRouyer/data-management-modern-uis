@@ -15,6 +15,7 @@
   },
   "packageManager": "yarn@4.0.2",
   "devDependencies": {
-    "@iconify-json/lucide": "^1.1.154"
+    "@iconify-json/lucide": "^1.1.154",
+    "@iconify-json/streamline-emojis": "^1.1.8"
   }
 }
