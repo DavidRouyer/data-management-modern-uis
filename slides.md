@@ -202,7 +202,7 @@ layout: two-cols-header
 ---
 transition: slide-up
 level: 2
-layout: fact
+layout: center
 ---
 
 # Interface instantanée <streamline-emojis-confetti-ball />
