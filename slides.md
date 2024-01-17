@@ -448,7 +448,7 @@ transition: slide-up
 level: 2
 ---
 
-# Partie 1 : Queries - Exemple détail de vente
+# Exemple détail de vente
 
 <br>
 
@@ -465,7 +465,7 @@ const { data, isLoading, isFetching, error } = useQuery({
 transition: fade-out
 ---
 
-# Partie 1 : Queries - Exemple liste de ventes
+# Exemple liste de ventes
 
 <br>
 
@@ -480,46 +480,119 @@ const { data, isLoading, isFetching, error } = useQuery({
 ---
 transition: slide-up
 level: 2
+layout: center
 ---
 
-# Partie 2 - Mutations - UX
+# Partie 2 - Mutations
 
-<br>
-
-Mises à jour optimistes
-
-On part du principe que l'action sera effectuée avec succès
-
-<p class="text-green-600">
-  <lucide-sparkles /> Meilleure UX
-</p>
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
 
 ---
 transition: slide-up
 level: 2
+layout: two-cols-header
 ---
 
-# Partie 2 - Mutations - Déroulement
+# Mises à jour classiques
+
+::left::
+
+- On clique sur un bouton
+<br>
+<br>
+- On affiche un chargement pendant que<br> la requête est envoyée au serveur
+<br>
+<br>
+- On affiche le résultat à l'utilisateur
 
 <br>
+<br>
+<br>
+<br>
 
-1. Mettre à jour l'état (**state**)
+::right::
+
+<div class="flex flex-col h-full justify-center">
+  <div class="pb-24">
+    <button type="button" class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" disabled="">
+      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      Processing...
+    </button>
+  </div>
+</div>
+
+---
+transition: slide-up
+level: 2
+layout: two-cols-header
+---
+
+# Mises à jour optimistes
+
+::left::
+
 <br>
 <br>
-2. Envoyer les données au serveur
 <br>
 <br>
-3. Effectuer des queries OU annuler les changements
+<br>
+
+- On clique sur un bouton
+<br>
+<br>
+- On affiche le résultat à l'utilisateur
+
+::right::
+
+<img src="/undraw_completed_m9ci.svg" class="aspect-square p-16 pb-32" />
+
+---
+transition: slide-up
+level: 2
+layout: two-cols-header
+---
+
+# Comment ça fonctionne ?
+
+::left::
+
+<br>
+<br>
+<br>
+<br>
+
+1. On envoie les données au serveur
+<br>
+<br>
+2. On met à jour l'état
+<br>
+<br>
+3. En cas d'erreur <streamline-emojis-cross-mark />, on annule les changements<br> et on affiche un message d'erreur
+
+::right::
+
+<img src="/undraw_join_re_w1lh.svg" class="aspect-square p-16 pb-32" />
 
 ---
 transition: fade-out
 ---
 
-# Partie 2 - Mutations - Le code
+# Le code
 
-<br>
-
-```ts {all|2|3|5|16|17|19|20|all}
+```ts {all|2|16|19|2|3|5|16|17|19|20|all}
 const { mutateAsync } = useMutation({
     onMutate: ({ id }) => {
       const previousSale = queryClient.getQueryData([`sale`, { id: 1 }]);
@@ -547,23 +620,58 @@ const { mutateAsync } = useMutation({
 ---
 transition: slide-up
 level: 2
+layout: center
 ---
 
-# Partie 3 : Subscriptions - Ecouter les changements
+# Partie 3 - Subscriptions
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+transition: slide-up
+level: 2
+layout: two-cols-header
+---
+
+# Ecouter les changements
+
+::left::
 
 <br>
+<br>
+<br>
 
-Message proactif du serveur nous indiquant qu'une mise à jour de données a été effectuée
+- On ouvre une conversation avec le serveur
+<br>
+<br>
+- Quand une donnée change, le serveur nous envoie un message pour dire qu'une donnée a changé
+<br>
+<br>
+- On ferme la conversation avec le serveur
+
+::right::
+
+<img src="/undraw_audio_conversation_re_3t38.svg" class="aspect-square p-16 pb-32" />
 
 ---
 transition: fade-out
 ---
 
-# Partie 3 - Subscriptions - Le code
+# Le code
 
 <br>
 
-```ts {all|5|7|all}
+```ts {all|3|5|7|all}
 client
   .request({
     query: 'saleUpdated'
@@ -577,18 +685,35 @@ client
 
 ---
 transition: slide-left
+layout: two-cols-header
 ---
 
 # Aller plus loin
 
+::left::
+
+<br>
+<br>
 <br>
 
-> Le state est détruit quand on ferme l'onglet ou le navigateur
+> L'état est détruit quand on ferme l'onglet ou le navigateur
 
+Amélioration <streamline-emojis-direct-hit />
+<br>
 Stocker l'état dans le cache du navigateur
 
+<br>
+
+Autre architecture <streamline-emojis-astronaut-1 />
+<br>
+Local-first application (**Pas à notre portée**)
+
+::right::
+
+<img src="/undraw_maker_launch_re_rq81.svg" class="aspect-square p-16 pb-32" />
+
 ---
-layout: default
+layout: fact
 ---
 
 # Des questions ?
